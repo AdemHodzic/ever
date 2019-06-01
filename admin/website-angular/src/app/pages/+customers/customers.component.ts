@@ -146,10 +146,11 @@ export class CustomersComponent implements AfterViewInit, OnDestroy {
 			.then(async (id) => {
 				this.showBanLoading = true;
 				await this._usersService.unbanUser(id);
+				this._loadDataSmartTable();
 				this.showBanLoading = false;
 				this._notifyService.success('User is unbanned.');
 			})
-			.catch(console.error);
+			.catch((_) => {});
 	}
 
 	private showBanPopup() {
@@ -164,10 +165,11 @@ export class CustomersComponent implements AfterViewInit, OnDestroy {
 			.then(async (id) => {
 				this.showBanLoading = true;
 				await this._usersService.banUser(id);
+				this._loadDataSmartTable();
 				this.showBanLoading = false;
 				this._notifyService.success('User is banned');
 			})
-			.catch(console.error);
+			.catch((_) => {});
 	}
 
 	private _loadSettingsSmartTable() {
